@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        div.layout {
+            background-color: lightblue;
+        }
+
+        div.view {
+            border: 1px solid blue;
+            margin: 10px 0;
+            background-color: #9886fc;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        table {
+            border: 1px solid #eee;
+            table-layout: fixed;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        table th {
+            font-weight: bold;
+            padding: 5px;
+            background: #efefef;
+            border: 1px solid #dddddd;
+        }
+
+        table td {
+            padding: 5px 10px;
+            border: 1px solid #eee;
+            text-align: left;
+        }
+
+        table tbody tr:nth-child(odd) {
+            background: #fff;
+        }
+
+        table tbody tr:nth-child(even) {
+            background: #F7F7F7;
+        }
+    </style>
+</head>
+<body>
+    @RenderSection("Header", false)
+
+    <div class="view">
+        @foreach (string str in new[] { "Lands", "Cultures" })
+        {
+            @Html.ActionLink(str, str, null, new { style = "margin: 5px" })
+        }
+    </div>
+
+
+    @if (IsSectionDefined("Body"))
+    {
+        @RenderSection("Body")
+    }
+
+
+    @RenderSection("Scripts", false)
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿@using Modul2.Models
+@model Crop[]
+
+@{
+    ViewBag.Title = "Crop Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Body {
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Урожайность</th>
+            <th>Орошение</th>
+            <th>Удобрения</th>
+        </tr>
+        @foreach (var crop in Model)
+        {
+            <tr>
+                <td>@crop.Name</td>
+                <td>@crop.Yield</td>
+                <td>@(crop.RequiresIrrigation ? "Нужно" : "Не нужно")</td>
+                <td>@crop.RequiredFertilizers</td>
+            </tr>
+        }
+    </table>
+    @Html.Partial("MyPartial2")
+}

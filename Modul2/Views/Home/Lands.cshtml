@@ -1,0 +1,30 @@
+﻿@using Modul2.Models
+@model FarmLand[]
+
+@{
+    ViewBag.Title = "Farm lands";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Body {
+<table>
+    <tr>
+        <th>Номер участка</th>
+        <th>Площадь</th>
+        <th>Орошение</th>
+        <th>Урожай</th>
+        <th>Удобрения</th>
+    </tr>
+    @foreach (var plot in Model)
+    {
+        <tr>
+            <td>@plot.PlotNumber</td>
+            <td>@plot.Area</td>
+            <td>@(plot.IsIrrigated ? "Происходит" : "Не происходит")</td>
+            <td>@plot.Crop</td>
+            <td>@plot.Fertilizer</td>
+        </tr>
+    }
+</table>
+@Html.Partial("MyPartial")
+}
